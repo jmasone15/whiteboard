@@ -1,0 +1,16 @@
+.wrapper {
+    text-align: center;
+    display: flex;
+    align-items: center;
+}
+
+.whiteboard canvas {
+    border: black solid 2px;
+    margin-left: 30px;
+}
+
+.pallette {
+    width: 20vw;
+    height: 98vh;
+    border: black solid 2px;
+}
