@@ -6,11 +6,11 @@
 
 .whiteboard canvas {
     border: black solid 2px;
-    margin-left: 30px;
 }
 
 .pallette {
-    width: 20vw;
+    width: 15vw;
     height: 98vh;
     border: black solid 2px;
+    margin: 0;
 }
