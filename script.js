@@ -1,19 +1,18 @@
 const canvasEl = document.getElementById("canvas");
 const coordinatesEl = document.getElementById("coordinates");
 const lineWidthEl = document.getElementById("line-width");
+const colorEl = document.getElementById("color");
 
 // Whiteboard variables
 let x = 0;
 let y = 0;
 let isDrawing = false;
 let context = canvasEl.getContext("2d", { alpha: true, desynchronized: false, colorSpace: "srgb", willReadFrequently: true });
-let color = "black";
+let color = "#000000";
 let lineWidth = 1;
 
 // Drawing Function
 const draw = (x1, y1, x2, y2) => {
-    console.log(lineWidth);
-
     context.beginPath();
     context.strokeStyle = color;
     context.lineWidth = lineWidth;
@@ -51,8 +50,13 @@ canvasEl.addEventListener("mouseup", ({ clientX, clientY, target }) => {
 lineWidthEl.addEventListener("change", () => {
     lineWidth = lineWidthEl.value;
 });
+colorEl.addEventListener("change", () => {
+    color = colorEl.value;
+    console.log(colorEl.value)
+})
 
 // On load
 canvasEl.setAttribute("height", Math.ceil(window.innerHeight * 96 / 100));
 canvasEl.setAttribute("width", Math.ceil(window.innerWidth * 95 / 100));
-lineWidthEl.value = lineWidth
+lineWidthEl.value = lineWidth;
+colorEl.value = color;
