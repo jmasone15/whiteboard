@@ -35,7 +35,6 @@ canvasEl.addEventListener("mousedown", ({ clientX, clientY, target }) => {
     x = clientX - target.offsetLeft;
     y = clientY - target.offsetTop;
     isDrawing = true;
-    currentLine.push({x, y});
 });
 canvasEl.addEventListener("mousemove", ({ clientX, clientY, target }) => {
     if (isDrawing) {
@@ -43,9 +42,9 @@ canvasEl.addEventListener("mousemove", ({ clientX, clientY, target }) => {
         let newY = clientY - target.offsetTop;
 
         draw(x, y, newX, newY);
+        currentLine.push({x, y, newX, newY});
         x = newX;
         y = newY;
-        currentLine.push({x, y});
     }
 });
 canvasEl.addEventListener("mouseup", ({ clientX, clientY, target }) => {
@@ -55,7 +54,6 @@ canvasEl.addEventListener("mouseup", ({ clientX, clientY, target }) => {
         x = 0;
         y = 0;
         isDrawing = false;
-        console.log(currentLine);
         drawnLines.push(currentLine);
         currentLine = [];
     }
@@ -70,6 +68,15 @@ colorEl.addEventListener("change", () => {
 clearEl.addEventListener("click", clearCanvas);
 undoEl.addEventListener("click", () => {
     clearCanvas();
+
+    console.log(drawnLines.pop());
+
+    for (let i = 0; i < drawnLines.length; i++) {
+        for (let j = 0; j < drawnLines[i].length; j++) {
+            const {x, y, newX, newY} = drawnLines[i][j]
+            draw(x, y, newX, newY)
+        }
+    }
 });
 
 
