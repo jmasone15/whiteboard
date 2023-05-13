@@ -101,7 +101,6 @@ lineWidthEl.addEventListener("change", () => {
 });
 colorEl.addEventListener("change", () => {
     color = colorEl.value;
-    console.log(colorEl.value)
 });
 clearEl.addEventListener("click", clearCanvas);
 undoEl.addEventListener("click", () => {
@@ -140,6 +139,11 @@ eraseBtnEl.addEventListener("click", () => {
     eraseBtnEl.style.backgroundColor = "light-blue";
     canvasEl.setAttribute("class", "whiteboard erase-cursor");
 });
+backgroundEl.addEventListener("change", () => {
+    background = backgroundEl.value;
+    updateCanvasBackground();
+});
+
 
 // On load
 canvasEl.setAttribute("height", Math.ceil(window.innerHeight * 96 / 100));
@@ -154,6 +158,4 @@ updateCanvasBackground();
 // TODO
 // Background
 // Eraser
-// Text
-// Shapes
 // UI
