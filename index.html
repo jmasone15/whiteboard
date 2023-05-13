@@ -8,12 +8,19 @@
     <title>Whiteboard</title>
 </head>
 <body>
-    <div class="wrapper">
-        <div class="pallette"></div>
-        <div class="whiteboard">
-            <h1 id="coordinates"></h1>
-            <canvas id="canvas"></canvas>
+    <nav class="header">
+        <h1>Whiteboard</h1>
+        <div>
+            <button>Undo</button>
+            <button>Redo</button>
+            <button>Clear</button>
         </div>
+    </nav>
+    <div class="wrapper">
+        <div class="pallette">
+            <input id="line-width" type="number" />
+        </div>
+        <canvas id="canvas" class="whiteboard"></canvas>
     </div>
 
     <script src="script.js"></script>
