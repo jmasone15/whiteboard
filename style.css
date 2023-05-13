@@ -45,6 +45,10 @@ button:hover {
     cursor: crosshair;
 }
 
+.erase-cursor:hover {
+    cursor: url("./eraser_cursor.cur"), auto;
+}
+
 .pallette {
     width: 5vw;
     margin: 0;

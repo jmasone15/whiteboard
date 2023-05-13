@@ -5,7 +5,9 @@ const colorEl = document.getElementById("color");
 const clearEl = document.getElementById("clear");
 const undoEl = document.getElementById("undo");
 const redoEl = document.getElementById("redo");
-const modeEl = document.getElementById("mode");
+const mouseBtnEl = document.getElementById("mouse");
+const drawBtnEl = document.getElementById("draw");
+const eraseBtnEl = document.getElementById("eraser");
 const backgroundEl = document.getElementById("background");
 
 // Whiteboard variables
@@ -24,7 +26,13 @@ let background = "#ffffff"
 // Drawing Function
 const draw = (x1, y1, x2, y2) => {
     context.beginPath();
-    context.strokeStyle = color;
+
+    if (mouseMode === "Erase") {
+        context.strokeStyle = background;
+    } else {
+        context.strokeStyle = color;
+    }
+
     context.lineWidth = lineWidth;
     context.lineCap = "round";
     context.lineJoin = "round";
@@ -49,16 +57,21 @@ const updateCanvasBackground = () => {
     context.fillStyle = background;
     context.fillRect(0, 0, canvasEl.width, canvasEl.height)
 }
+const resetModeButtons = () => {
+    [mouseBtnEl, drawBtnEl, eraseBtnEl].forEach(element => {
+        element.style.backgroundColor = "light-grey";
+    });
+}
 
 canvasEl.addEventListener("mousedown", ({ clientX, clientY, target }) => {
-    if (mouseMode === "Draw") {
+    if (mouseMode === "Draw" || mouseMode === "Erase") {
         x = clientX - target.offsetLeft;
         y = clientY - target.offsetTop;
         isDrawing = true;
     }
 });
 canvasEl.addEventListener("mousemove", ({ clientX, clientY, target }) => {
-    if (mouseMode === "Draw") {
+    if (mouseMode === "Draw" || mouseMode === "Erase") {
         if (isDrawing) {
             let newX = clientX - target.offsetLeft;
             let newY = clientY - target.offsetTop;
@@ -71,7 +84,7 @@ canvasEl.addEventListener("mousemove", ({ clientX, clientY, target }) => {
     }
 });
 canvasEl.addEventListener("mouseup", ({ clientX, clientY, target }) => {
-    if (mouseMode === "Draw") {
+    if (mouseMode === "Draw" || mouseMode === "Erase") {
         if (isDrawing) {
             draw(x, y, clientX - target.offsetLeft, clientY - target.offsetTop)
     
@@ -109,22 +122,29 @@ redoEl.addEventListener("click", () => {
         resetCanvas();
     }
 });
-modeEl.addEventListener("click", () => {
-    mouseMode = mouseMode === "Draw" ? "Mouse" : "Draw";
-    modeEl.textContent = mouseMode;
-
-    if (mouseMode === "Draw") {
-        canvasEl.classList.add("crosshair-cursor");
-    } else {
-        canvasEl.classList.remove("crosshair-cursor");
-    }
+mouseBtnEl.addEventListener("click", () => {
+    mouseMode = "Mouse";
+    resetModeButtons();
+    mouseBtnEl.style.backgroundColor = "light-blue";
+    canvasEl.setAttribute("class", "whiteboard");
 });
-
+drawBtnEl.addEventListener("click", () => {
+    mouseMode = "Draw";
+    resetModeButtons();
+    drawBtnEl.style.backgroundColor = "light-blue";
+    canvasEl.setAttribute("class", "whiteboard crosshair-cursor");
+});
+eraseBtnEl.addEventListener("click", () => {
+    mouseMode = "Erase";
+    resetModeButtons();
+    eraseBtnEl.style.backgroundColor = "light-blue";
+    canvasEl.setAttribute("class", "whiteboard erase-cursor");
+});
 
 // On load
 canvasEl.setAttribute("height", Math.ceil(window.innerHeight * 96 / 100));
 canvasEl.setAttribute("width", Math.ceil(window.innerWidth * 95 / 100));
-canvasEl.classList.add(mouseMode === "Draw" ? "crosshair-cursor" : "");
+canvasEl.classList.add("crosshair-cursor");
 lineWidthEl.value = lineWidth;
 colorEl.value = color;
 backgroundEl.value = background;
