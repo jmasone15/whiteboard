@@ -41,8 +41,8 @@ button:hover {
     height: 96vh;
 }
 
-.crosshair-cursor:hover {
-    cursor: crosshair;
+.pencil-cursor:hover {
+    cursor: url("./pencil2_cursor.cur"), auto;;
 }
 
 .erase-cursor:hover {

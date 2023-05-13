@@ -132,7 +132,7 @@ drawBtnEl.addEventListener("click", () => {
     mouseMode = "Draw";
     resetModeButtons();
     drawBtnEl.style.backgroundColor = "light-blue";
-    canvasEl.setAttribute("class", "whiteboard crosshair-cursor");
+    canvasEl.setAttribute("class", "whiteboard pencil-cursor");
 });
 eraseBtnEl.addEventListener("click", () => {
     mouseMode = "Erase";
@@ -144,7 +144,7 @@ eraseBtnEl.addEventListener("click", () => {
 // On load
 canvasEl.setAttribute("height", Math.ceil(window.innerHeight * 96 / 100));
 canvasEl.setAttribute("width", Math.ceil(window.innerWidth * 95 / 100));
-canvasEl.classList.add("crosshair-cursor");
+canvasEl.classList.add("pencil-cursor");
 lineWidthEl.value = lineWidth;
 colorEl.value = color;
 backgroundEl.value = background;
