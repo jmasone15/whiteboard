@@ -4,6 +4,7 @@ const lineWidthEl = document.getElementById("line-width");
 const colorEl = document.getElementById("color");
 const clearEl = document.getElementById("clear");
 const undoEl = document.getElementById("undo");
+const redoEl = document.getElementById("redo");
 
 // Whiteboard variables
 let x = 0;
@@ -14,6 +15,7 @@ let color = "#000000";
 let lineWidth = 1;
 let currentLine = [];
 let drawnLines = [];
+let undoneLines = [];
 
 // Drawing Function
 const draw = (x1, y1, x2, y2) => {
@@ -26,9 +28,26 @@ const draw = (x1, y1, x2, y2) => {
     context.lineTo(x2, y2);
     context.stroke();
 }
-
 const clearCanvas = () => {
     context.clearRect(0, 0, canvasEl.width, canvasEl.height)
+}
+const resetCanvas = (event) => {
+    if (drawnLines.length > 0) {
+        clearCanvas();
+
+        if (event.target.id === "undo") {
+            undoneLines.push(drawnLines.pop());
+        } else {
+            drawnLines.push(undoneLines.pop())
+        }
+    
+        for (let i = 0; i < drawnLines.length; i++) {
+            for (let j = 0; j < drawnLines[i].length; j++) {
+                const {x, y, newX, newY} = drawnLines[i][j]
+                draw(x, y, newX, newY)
+            }
+        }
+    }
 }
 
 canvasEl.addEventListener("mousedown", ({ clientX, clientY, target }) => {
@@ -66,18 +85,8 @@ colorEl.addEventListener("change", () => {
     console.log(colorEl.value)
 });
 clearEl.addEventListener("click", clearCanvas);
-undoEl.addEventListener("click", () => {
-    clearCanvas();
-
-    console.log(drawnLines.pop());
-
-    for (let i = 0; i < drawnLines.length; i++) {
-        for (let j = 0; j < drawnLines[i].length; j++) {
-            const {x, y, newX, newY} = drawnLines[i][j]
-            draw(x, y, newX, newY)
-        }
-    }
-});
+undoEl.addEventListener("click", resetCanvas);
+redoEl.addEventListener("click", resetCanvas);
 
 
 // On load
