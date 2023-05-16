@@ -17,7 +17,7 @@ button:hover {
     justify-content: space-between;
     align-items: center;
     border-bottom: 1px solid #E5E5E5;
-    background-color: #14213d;
+    background-color: #03045e;
 }
 
 .header h1 {
@@ -81,11 +81,21 @@ i {
 }
 
 .pallette i {
-    color: #14213d;
-    padding: 5px 10px 5px 15px;
+    color: #03045e;
+    padding: 5px 10px 5px 10px;
     margin-top: 10px;
     border: solid 1px black;
     background-color: #fff;
+    transition: all ease-in-out 0.25s;
+}
+
+.active-button {
+    background-color: #03045e !important;
+    color: #fff !important;
+}
+
+#mouse {
+    padding: 5px 15px 5px 15px;
 }
 
 #clear {
@@ -98,12 +108,12 @@ i:hover {
 
 #undo:hover {
     transform: rotate(-360deg);
-    color: #FCA311;
+    color: #90e0ef;
 }
 
 #redo:hover {
     transform: rotate(360deg);
-    color: #FCA311;
+    color: #90e0ef;
 }
 
 #clear:hover {

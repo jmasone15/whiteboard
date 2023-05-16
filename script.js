@@ -60,7 +60,7 @@ const updateCanvasBackground = () => {
 }
 const resetModeButtons = () => {
     [mouseBtnEl, drawBtnEl, eraseBtnEl].forEach(element => {
-        element.style.backgroundColor = "light-grey";
+        element.classList.remove("active-button");
     });
 }
 
@@ -125,27 +125,24 @@ redoEl.addEventListener("click", () => {
 mouseBtnEl.addEventListener("click", () => {
     mouseMode = "Mouse";
     resetModeButtons();
-    mouseBtnEl.style.backgroundColor = "light-blue";
+    mouseBtnEl.classList.add("active-button");
     canvasEl.setAttribute("class", "whiteboard");
 });
 drawBtnEl.addEventListener("click", () => {
     mouseMode = "Draw";
     resetModeButtons();
-    drawBtnEl.style.backgroundColor = "light-blue";
+    drawBtnEl.classList.add("active-button");
     canvasEl.setAttribute("class", "whiteboard pencil-cursor");
 });
 eraseBtnEl.addEventListener("click", () => {
     mouseMode = "Erase";
     resetModeButtons();
-    eraseBtnEl.style.backgroundColor = "light-blue";
+    eraseBtnEl.classList.add("active-button");
     canvasEl.setAttribute("class", "whiteboard erase-cursor");
 });
 backgroundEl.addEventListener("change", () => {
     background = backgroundEl.value;
     updateCanvasBackground();
-});
-modeEl.addEventListener("click", () => {
-    document.querySelector(".side-content").style.display = "flex"
 });
 
 
