@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Rock+Salt&display=swap');
+
 body {
     margin: 0;
     height: 100%;
@@ -14,12 +16,14 @@ button:hover {
     height: 4vh;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid rgb(150, 150, 150);
-    background-color: rgb(208, 238, 242);
+    border-bottom: 1px solid #E5E5E5;
+    background-color: #14213d;
 }
 
 .header h1 {
-    margin-left: 10px;
+    margin-left: 50px;
+    color: #ffffff;
+    font-family: 'Rock Salt', cursive;
 }
 
 .header div {
@@ -54,15 +58,58 @@ button:hover {
 }
 
 .pallette {
-    width: 5vw;
+    width: 75px;
     margin: 0;
     border-right: 1px solid rgb(150, 150, 150);
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #E5E5E5;
 }
 
-.pallette input,button {
+.pallette input, button {
     width: 3vw;
     margin-top: 10px;
+}
+
+i {
+    font-size: 30px;
+    border-radius: 8px;
+    color: #E5E5E5;
+    margin: 0 10px;
+    transition: all ease-in-out 0.75s;
+}
+
+.pallette i {
+    color: #14213d;
+    padding: 5px 10px 5px 15px;
+    margin-top: 10px;
+    border: solid 1px black;
+    background-color: #fff;
+}
+
+#clear {
+    transition: all ease-in-out 0.2s;
+}
+
+i:hover {
+    cursor: pointer;
+}
+
+#undo:hover {
+    transform: rotate(-360deg);
+    color: #FCA311;
+}
+
+#redo:hover {
+    transform: rotate(360deg);
+    color: #FCA311;
+}
+
+#clear:hover {
+    color: #e63946;
+}
+
+#mode {
+    position: relative;
 }

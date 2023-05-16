@@ -9,6 +9,7 @@ const mouseBtnEl = document.getElementById("mouse");
 const drawBtnEl = document.getElementById("draw");
 const eraseBtnEl = document.getElementById("eraser");
 const backgroundEl = document.getElementById("background");
+const modeEl = document.getElementById("mode");
 
 // Whiteboard variables
 let x = 0;
@@ -143,19 +144,16 @@ backgroundEl.addEventListener("change", () => {
     background = backgroundEl.value;
     updateCanvasBackground();
 });
+modeEl.addEventListener("click", () => {
+    document.querySelector(".side-content").style.display = "flex"
+});
 
 
 // On load
 canvasEl.setAttribute("height", Math.ceil(window.innerHeight * 96 / 100));
-canvasEl.setAttribute("width", Math.ceil(window.innerWidth * 95 / 100));
+canvasEl.setAttribute("width", Math.ceil(window.innerWidth * 95 / 100) + 200);
 canvasEl.classList.add("pencil-cursor");
 lineWidthEl.value = lineWidth;
 colorEl.value = color;
 backgroundEl.value = background;
 updateCanvasBackground();
-
-
-// TODO
-// Background
-// Eraser
-// UI
