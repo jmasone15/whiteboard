@@ -46,11 +46,11 @@ button:hover {
 }
 
 .pencil-cursor:hover {
-    cursor: url("./pencil2_cursor.cur"), auto;
+    cursor: url("../images/pencil2_cursor.cur"), auto;
 }
 
 .erase-cursor:hover {
-    cursor: url("./eraser_cursor.cur"), auto;
+    cursor: url("../images/eraser_cursor.cur"), auto;
 }
 
 .text-cursor:hover {
