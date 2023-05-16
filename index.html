@@ -23,9 +23,14 @@
             <i id="mouse" class="fa-solid fa-arrow-pointer"></i>
             <i id="draw" class="fa-solid fa-pencil active-button"></i>
             <i id="eraser" class="fa-solid fa-eraser"></i>
-            <input id="line-width" type="number" min="0"/>
-            <input id="color" type="color" />
-            <input id="background" type="color" />
+            <div class="line-width">
+                <i id="increase" class="fa-solid fa-plus"></i>
+                <i id="decrease" class="fa-solid fa-minus"></i>
+            </div>
+            <i style="color: #000000" id="color-icon" class="fa-solid fa-palette"></i>
+            <input style="display: none;" id="color" type="color" />
+            <i id="background-icon" class="fa-solid fa-image"></i>
+            <input style="display: none;" id="background" type="color" />
         </div>
         <canvas id="canvas" class="whiteboard"></canvas>
     </div>

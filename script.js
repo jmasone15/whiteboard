@@ -1,15 +1,17 @@
 const canvasEl = document.getElementById("canvas");
 const coordinatesEl = document.getElementById("coordinates");
-const lineWidthEl = document.getElementById("line-width");
-const colorEl = document.getElementById("color");
+const colorEl = document.getElementById("color-icon");
+const colorInputEl = document.getElementById("color");
 const clearEl = document.getElementById("clear");
 const undoEl = document.getElementById("undo");
 const redoEl = document.getElementById("redo");
 const mouseBtnEl = document.getElementById("mouse");
 const drawBtnEl = document.getElementById("draw");
 const eraseBtnEl = document.getElementById("eraser");
-const backgroundEl = document.getElementById("background");
-const modeEl = document.getElementById("mode");
+const backgroundEl = document.getElementById("background-icon");
+const backgroundInputEl = document.getElementById("background");
+const increaseEl = document.getElementById("increase");
+const decreaseEl = document.getElementById("decrease");
 
 // Whiteboard variables
 let x = 0;
@@ -97,11 +99,12 @@ canvasEl.addEventListener("mouseup", ({ clientX, clientY, target }) => {
         }
     }
 });
-lineWidthEl.addEventListener("change", () => {
-    lineWidth = lineWidthEl.value;
+colorEl.addEventListener("click", () => {
+    colorInputEl.click();
 });
-colorEl.addEventListener("change", () => {
-    color = colorEl.value;
+colorInputEl.addEventListener("change", () => {
+    color = colorInputEl.value;
+    colorEl.style.color = colorInputEl.value;
 });
 clearEl.addEventListener("click", clearCanvas);
 undoEl.addEventListener("click", () => {
@@ -140,9 +143,20 @@ eraseBtnEl.addEventListener("click", () => {
     eraseBtnEl.classList.add("active-button");
     canvasEl.setAttribute("class", "whiteboard erase-cursor");
 });
-backgroundEl.addEventListener("change", () => {
-    background = backgroundEl.value;
+backgroundEl.addEventListener("click", () => {
+    backgroundInputEl.click();
+});
+backgroundInputEl.addEventListener("change", () => {
+    background = backgroundInputEl.value;
     updateCanvasBackground();
+});
+increaseEl.addEventListener("click", () => {
+    lineWidth++
+});
+decreaseEl.addEventListener("click", () => {
+    if (lineWidth > 1) {
+        lineWidth--
+    }
 });
 
 
@@ -150,7 +164,6 @@ backgroundEl.addEventListener("change", () => {
 canvasEl.setAttribute("height", Math.ceil(window.innerHeight * 96 / 100));
 canvasEl.setAttribute("width", Math.ceil(window.innerWidth * 95 / 100) + 200);
 canvasEl.classList.add("pencil-cursor");
-lineWidthEl.value = lineWidth;
-colorEl.value = color;
 backgroundEl.value = background;
+colorInputEl.value = color;
 updateCanvasBackground();

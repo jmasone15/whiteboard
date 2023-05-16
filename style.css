@@ -123,3 +123,22 @@ i:hover {
 #mode {
     position: relative;
 }
+
+.line-width {
+    display: flex;
+}
+
+.line-width i {
+    font-size: 15px;
+    margin: 10px 0 0 0;
+}
+
+#increase:active {
+    transform: scale(2);
+    background-color: #03045e !important;
+}
+
+#decrease:active {
+    transform: scale(2);
+    background-color: #03045e !important;
+}
