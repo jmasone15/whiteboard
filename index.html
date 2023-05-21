@@ -1,43 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link
+      rel="shortcut icon"
+      href="./assets/images/favicon.ico"
+      type="image/x-icon" />
     <title>Whiteboard</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <nav class="header">
-        <h1>Whiteboard</h1>
-        <div>
-            <i id="undo" class="fa-solid fa-rotate-left" alt="Undo"></i>
-            <i id="redo" class="fa-solid fa-rotate-right" alt="Redo"></i>
-            <i id="clear" class="fa-sharp fa-solid fa-trash" alt="Clear"></i>
-        </div>
+      <h1>Whiteboard</h1>
+      <div>
+        <i id="undo" class="fa-solid fa-rotate-left" alt="Undo"></i>
+        <i id="redo" class="fa-solid fa-rotate-right" alt="Redo"></i>
+        <i id="clear" class="fa-sharp fa-solid fa-trash" alt="Clear"></i>
+      </div>
     </nav>
     <div class="wrapper">
-        <div class="pallette">
-            <i id="mouse" class="fa-solid fa-arrow-pointer"></i>
-            <i id="draw" class="fa-solid fa-pencil active-button"></i>
-            <i id="eraser" class="fa-solid fa-eraser"></i>
-            <div class="line-width">
-                <i id="increase" class="fa-solid fa-plus"></i>
-                <i id="decrease" class="fa-solid fa-minus"></i>
-            </div>
-            <i style="color: #000000" id="color-icon" class="fa-solid fa-palette"></i>
-            <input style="display: none;" id="color" type="color" />
-            <i id="background-icon" class="fa-solid fa-image"></i>
-            <input style="display: none;" id="background" type="color" />
+      <div class="pallette">
+        <i id="mouse" class="fa-solid fa-arrow-pointer"></i>
+        <i id="draw" class="fa-solid fa-pencil active-button"></i>
+        <i id="eraser" class="fa-solid fa-eraser"></i>
+        <div class="line-width">
+          <i id="increase" class="fa-solid fa-plus"></i>
+          <i id="decrease" class="fa-solid fa-minus"></i>
         </div>
-        <canvas id="canvas" class="whiteboard"></canvas>
+        <i
+          style="color: #000000"
+          id="color-icon"
+          class="fa-solid fa-palette"></i>
+        <input style="display: none" id="color" type="color" />
+        <i id="background-icon" class="fa-solid fa-image"></i>
+        <input style="display: none" id="background" type="color" />
+      </div>
+      <canvas id="canvas" class="whiteboard"></canvas>
     </div>
 
     <script src="./assets/js/script.js"></script>
-    <script src="https://kit.fontawesome.com/319698822a.js" crossorigin="anonymous"></script>
-</body>
-
+    <script
+      src="https://kit.fontawesome.com/319698822a.js"
+      crossorigin="anonymous"></script>
+  </body>
 </html>

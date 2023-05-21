@@ -1,144 +1,144 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Rock+Salt&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Rock+Salt&display=swap");
 
 body {
-    margin: 0;
-    height: 100%;
-    overflow: hidden;
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
 }
 
 button:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 .header {
-    display: flex;
-    width: 100%;
-    height: 4vh;
-    justify-content: space-between;
-    align-items: center;
-    border-bottom: 1px solid #E5E5E5;
-    background-color: #03045e;
+  display: flex;
+  width: 100%;
+  height: 4vh;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #03045e;
 }
 
 .header h1 {
-    margin-left: 50px;
-    color: #ffffff;
-    font-family: 'Rock Salt', cursive;
+  margin-left: 50px;
+  color: #ffffff;
+  font-family: "Rock Salt", cursive;
 }
 
 .header div {
-    display: flex;
+  display: flex;
 }
 
 .header div button {
-    margin: 0 10px;
+  margin: 0 10px;
 }
 
 .wrapper {
-    text-align: center;
-    display: flex;
-    height: 96vh;
+  text-align: center;
+  display: flex;
+  height: 96vh;
 }
 
 .whiteboard canvas {
-    width: 95vw;
-    height: 96vh;
+  width: 95vw;
+  height: 96vh;
 }
 
 .pencil-cursor:hover {
-    cursor: url("../images/pencil2_cursor.cur"), auto;
+  cursor: url("../images/pencil2_cursor.cur"), auto;
 }
 
 .erase-cursor:hover {
-    cursor: url("../images/eraser_cursor.cur"), auto;
+  cursor: url("../images/eraser_cursor.cur"), auto;
 }
 
 .text-cursor:hover {
-    cursor: text;
+  cursor: text;
 }
 
 .pallette {
-    width: 75px;
-    margin: 0;
-    border-right: 1px solid rgb(150, 150, 150);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #E5E5E5;
+  width: 75px;
+  margin: 0;
+  border-right: 1px solid rgb(150, 150, 150);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #e5e5e5;
 }
 
-.pallette input, button {
-    width: 3vw;
-    margin-top: 10px;
+.pallette input,
+button {
+  width: 3vw;
+  margin-top: 10px;
 }
 
 i {
-    font-size: 30px;
-    border-radius: 8px;
-    color: #E5E5E5;
-    margin: 0 10px;
-    transition: all ease-in-out 0.75s;
+  font-size: 30px;
+  border-radius: 8px;
+  color: #e5e5e5;
+  margin: 0 10px;
+  transition: all ease-in-out 0.75s;
 }
 
 .pallette i {
-    color: #03045e;
-    padding: 5px 10px 5px 10px;
-    margin-top: 10px;
-    border: solid 1px black;
-    background-color: #fff;
-    transition: all ease-in-out 0.25s;
+  color: #03045e;
+  padding: 5px 10px 5px 10px;
+  margin-top: 10px;
+  border: solid 1px black;
+  background-color: #fff;
+  transition: all ease-in-out 0.25s;
 }
 
 .active-button {
-    background-color: #03045e !important;
-    color: #fff !important;
+  background-color: #03045e !important;
+  color: #fff !important;
 }
 
 #mouse {
-    padding: 5px 15px 5px 15px;
+  padding: 5px 15px 5px 15px;
 }
 
 #clear {
-    transition: all ease-in-out 0.2s;
+  transition: all ease-in-out 0.2s;
 }
 
 i:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 #undo:hover {
-    transform: rotate(-360deg);
-    color: #90e0ef;
+  transform: rotate(-360deg);
+  color: #90e0ef;
 }
 
 #redo:hover {
-    transform: rotate(360deg);
-    color: #90e0ef;
+  transform: rotate(360deg);
+  color: #90e0ef;
 }
 
 #clear:hover {
-    color: #e63946;
+  color: #e63946;
 }
 
 #mode {
-    position: relative;
+  position: relative;
 }
 
 .line-width {
-    display: flex;
+  display: flex;
 }
 
 .line-width i {
-    font-size: 15px;
-    margin: 10px 0 0 0;
+  font-size: 15px;
+  margin: 10px 0 0 0;
 }
 
 #increase:active {
-    transform: scale(2);
-    background-color: #03045e !important;
+  transform: scale(2);
+  background-color: #03045e !important;
 }
 
 #decrease:active {
-    transform: scale(2);
-    background-color: #03045e !important;
+  transform: scale(2);
+  background-color: #03045e !important;
 }
