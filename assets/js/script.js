@@ -155,9 +155,6 @@ downloadBtnEl.addEventListener("click", () => {
 colorEl.addEventListener("click", () => {
   colorInputEl.click();
 });
-colorEl.addEventListener("touchstart", () => {
-  colorInputEl.click()
-})
 colorInputEl.addEventListener("change", () => {
   color = colorInputEl.value;
   colorEl.style.color = colorInputEl.value;
