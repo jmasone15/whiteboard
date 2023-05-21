@@ -24,6 +24,14 @@ let drawnLines = [];
 let undoneLines = [];
 let mouseMode = "Draw";
 let background = "#ffffff";
+const mouseEvents = [
+  "touchstart",
+  "touchmove",
+  "touchend",
+  "mousedown",
+  "mousemove",
+  "mouseup"
+];
 let context = canvasEl.getContext("2d", {
   alpha: true,
   desynchronized: false,
@@ -76,46 +84,60 @@ const resetModeButtons = () => {
   });
 };
 const setCanvasProperties = () => {
-  canvasEl.setAttribute("height", Math.ceil((window.innerHeight * 96) / 100));
-  canvasEl.setAttribute(
-    "width",
-    Math.ceil((window.innerWidth * 95) / 100) + 200
-  );
+  const canvasHeight = Math.ceil((window.innerHeight * 96) / 100);
+  const canvasWidth = Math.ceil((window.innerWidth * 95) / 100);
+
+  canvasEl.setAttribute("height", canvasHeight);
+  canvasEl.setAttribute("width", canvasWidth);
+};
+const mouseMoveEvent = event => {
+  const { type, target, clientX, clientY } = event;
+  let xCoord;
+  let yCoord;
+
+  if (["touchstart", "touchmove", "touchend"].includes(type)) {
+    xCoord = event.touches[0].clientX;
+    yCoord = event.touches[0].clientY;
+  } else {
+    xCoord = clientX;
+    yCoord = clientY;
+  }
+
+  if (mouseMode === "Draw" || mouseMode === "Erase") {
+    if (type === "touchstart" || type === "mousedown") {
+      x = xCoord - target.offsetLeft;
+      y = yCoord - target.offsetTop;
+      isDrawing = true;
+    }
+
+    if (isDrawing) {
+      if (type === "touchmove" || type === "mousemove") {
+        let newX = xCoord - target.offsetLeft;
+        let newY = yCoord - target.offsetTop;
+
+        draw(x, y, newX, newY, color);
+        currentLine.push({ x, y, newX, newY });
+        x = newX;
+        y = newY;
+      } else if (type === "touchend" || type === "mouseup") {
+        draw(
+          x,
+          y,
+          xCoord - target.offsetLeft,
+          yCoord - target.offsetTop,
+          color
+        );
+
+        x = 0;
+        y = 0;
+        isDrawing = false;
+        drawnLines.push({ currentLine, lineColor: color });
+        currentLine = [];
+      }
+    }
+  }
 };
 
-canvasEl.addEventListener("mousedown", ({ clientX, clientY, target }) => {
-  if (mouseMode === "Draw" || mouseMode === "Erase") {
-    x = clientX - target.offsetLeft;
-    y = clientY - target.offsetTop;
-    isDrawing = true;
-  }
-});
-canvasEl.addEventListener("mousemove", ({ clientX, clientY, target }) => {
-  if (mouseMode === "Draw" || mouseMode === "Erase") {
-    if (isDrawing) {
-      let newX = clientX - target.offsetLeft;
-      let newY = clientY - target.offsetTop;
-
-      draw(x, y, newX, newY, color);
-      currentLine.push({ x, y, newX, newY });
-      x = newX;
-      y = newY;
-    }
-  }
-});
-canvasEl.addEventListener("mouseup", ({ clientX, clientY, target }) => {
-  if (mouseMode === "Draw" || mouseMode === "Erase") {
-    if (isDrawing) {
-      draw(x, y, clientX - target.offsetLeft, clientY - target.offsetTop, color);
-
-      x = 0;
-      y = 0;
-      isDrawing = false;
-      drawnLines.push({ currentLine, lineColor: color });
-      currentLine = [];
-    }
-  }
-});
 colorEl.addEventListener("click", () => {
   colorInputEl.click();
 });
@@ -180,6 +202,9 @@ decreaseEl.addEventListener("click", () => {
 window.addEventListener("resize", () => {
   setCanvasProperties();
 });
+mouseEvents.forEach(eventType =>
+  canvasEl.addEventListener(eventType, mouseMoveEvent)
+);
 
 // On load
 setCanvasProperties();
@@ -189,7 +214,4 @@ colorInputEl.value = color;
 updateCanvasBackground();
 
 // TODO
-// Rework pencil size increase/decrease
-// Mobile drawing
-// Mobile UI
 // Save Current Drawing

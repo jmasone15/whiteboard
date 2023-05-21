@@ -20,7 +20,7 @@ button:hover {
 }
 
 .header h1 {
-  margin-left: 50px;
+  margin-left: 2vw;
   color: #ffffff;
   font-family: "Rock Salt", cursive;
 }
@@ -36,11 +36,6 @@ button:hover {
 .wrapper {
   text-align: center;
   display: flex;
-  height: 96vh;
-}
-
-.whiteboard canvas {
-  width: 95vw;
   height: 96vh;
 }
 
@@ -78,6 +73,10 @@ i {
   color: #e5e5e5;
   margin: 0 10px;
   transition: all ease-in-out 0.75s;
+}
+
+canvas {
+  overflow: hidden;
 }
 
 .pallette i {
@@ -141,4 +140,13 @@ i:hover {
 #decrease:active {
   transform: scale(2);
   background-color: #03045e !important;
+}
+
+@media only screen and (max-width: 600px) {
+  .header {
+    font-size: 10px;
+  }
+  i {
+    font-size: 25px;
+  }
 }
