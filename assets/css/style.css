@@ -93,7 +93,7 @@ canvas {
   color: #fff !important;
 }
 
-#mouse {
+#mouse, #download {
   padding: 5px 15px 5px 15px;
 }
 

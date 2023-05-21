@@ -12,6 +12,7 @@ const backgroundEl = document.getElementById("background-icon");
 const backgroundInputEl = document.getElementById("background");
 const increaseEl = document.getElementById("increase");
 const decreaseEl = document.getElementById("decrease");
+const downloadBtnEl = document.getElementById("download");
 
 // Whiteboard variables
 let x = 0;
@@ -96,8 +97,13 @@ const mouseMoveEvent = event => {
   let yCoord;
 
   if (["touchstart", "touchmove", "touchend"].includes(type)) {
-    xCoord = event.touches[0].clientX;
-    yCoord = event.touches[0].clientY;
+    if (type === "touchend") {
+      xCoord = event.changedTouches[0].clientX;
+      yCoord = event.changedTouches[0].clientY;
+    } else {
+      xCoord = event.touches[0].clientX;
+      yCoord = event.touches[0].clientY;
+    }
   } else {
     xCoord = clientX;
     yCoord = clientY;
@@ -138,6 +144,14 @@ const mouseMoveEvent = event => {
   }
 };
 
+downloadBtnEl.addEventListener("click", () => {
+  const link = document.createElement("a");
+
+  link.download = "Your Masterpiece.png";
+  link.href = canvasEl.toDataURL();
+  link.click();
+  link.delete;
+});
 colorEl.addEventListener("click", () => {
   colorInputEl.click();
 });
@@ -212,6 +226,3 @@ canvasEl.classList.add("pencil-cursor");
 backgroundEl.value = background;
 colorInputEl.value = color;
 updateCanvasBackground();
-
-// TODO
-// Save Current Drawing
